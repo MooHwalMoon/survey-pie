@@ -1,24 +1,32 @@
-import './App.css';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+
+import CompletionPage from './pages/CompletionPage';
+import SurveyPage from './pages/SurveyPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <ProgressIndicator />
+      <QuestionBox
+        questions={questions[step]}
+        questionsLength={questions.length}
+        step={step}
+        answers={answers[step]}
+        setAnswer={(newAnswer) => {
+          setAnswers((answers) => {
+            const newAnswers = [...answers];
+            newAnswers[step] = newAnswer;
+            return newAnswer;
+          });
+        }}
+      /> */}
+      <div>Hello World!!</div>
+      <Routes>
+        <Route path="/done/:surveyId" element={<CompletionPage />}></Route>
+        <Route path="/survey/:surveyId" element={<SurveyPage />}>
+          <Route path=":step" element={<SurveyPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
