@@ -1,39 +1,59 @@
 import { useNavigate } from 'react-router-dom';
-function ActionButtons({ questionsLength, step }) {
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+
+import useStep from '../../hooks/useStep';
+import questionsLengthState from '../../stores/survey/questionsLengthState';
+import Button from '../Button';
+
+function ActionButtons() {
+  const step = useStep();
+  const questionsLength = useRecoilValue(questionsLengthState);
+
   const isLast = questionsLength - 1 === step;
   const navigate = useNavigate();
   return (
-    <div>
+    <ActionButtonWrapper>
       {step === 0 || (
-        <button
+        <Button
+          type="SECONDARY"
           onClick={() => {
             //navigate('/survey/1/' + (step - 1));
             navigate(`${step - 1}`);
           }}
         >
           이전
-        </button>
+        </Button>
       )}
       {isLast ? (
-        <button
+        <Button
+          type="PRIMARY"
           onClick={() => {
-            navigate('/done/1');
+            navigate(`/done/${step}`);
           }}
         >
           제출
-        </button>
+        </Button>
       ) : (
-        <button
+        <Button
+          type="PRIMARY"
           onClick={() => {
             //navigate('/survey/1/' + (step + 1));
             navigate(`${step + 1}`);
           }}
         >
           다음
-        </button>
+        </Button>
       )}
-    </div>
+    </ActionButtonWrapper>
   );
 }
+
+const ActionButtonWrapper = styled.div`
+  margin-top: 72px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+`;
 
 export default ActionButtons;

@@ -14,6 +14,8 @@ function Item({ children, onChange }) {
 
 function SelectInput({ answer = [], setAnswer, options }) {
   const handleChange = (isChecked, index) => {
+    console.log('answer', answer);
+
     if (isChecked) {
       setAnswer([...answer, index]);
     } else {
