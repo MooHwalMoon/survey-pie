@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function TextAreaImput({ answer, setAnswer, options }) {
+function TextAreaImput({ answer = '', setAnswer, options }) {
   return (
     <TextArea
       value={answer}

@@ -10,14 +10,14 @@ const colorMap = {
 
 const Button = styled.button`
   padding: 16px 24px;
-  width: 200px;
+  min-width: 200px;
 
   color: ${({ type }) => colorMap[type].BUTTON.DEFAULT.COLOR};
   background-color: ${({ type }) => colorMap[type].BUTTON.DEFAULT.BACKGROUND};
   border-radius: 4px;
   border: none;
   font-weight: bold;
-
+  font-size: 18px;
   border: ${({ type }) =>
     type === 'TERTIARY'
       ? `1px solid ${TERTIARY.BUTTON.DEFAULT.BORDER}`
